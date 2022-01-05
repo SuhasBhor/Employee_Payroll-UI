@@ -26,6 +26,7 @@
             <div class="row-content">
                 <label for="label text" for="name">Name</label>
                 <input class="input" type="text" id="name" name="name" placeholder="Enter Your Name" required>
+                <error-output class="text-error" for="text"></error-output>
             </div>
             <div class="row-content">
                 <label class="label text" for="profile">Profile Image</label>
@@ -33,22 +34,22 @@
                     <label>
                         <input type="radio" id="profile1" name="profile"
                                 value="../Assets/Ellipse -3.png" required>
-                        <img class="profile" id="image1" src="../Assets/Ellipse -3.png"> 
+                        <img class="profile" id="image1" src="../Assets/Ellipse -3.png" required> 
                     </label>
                     <label>
                         <input type="radio" id="profile2" name="profile"
                                 value="../Assets/Ellipse 1.png" required>
-                        <img class="profile" id="image2" src="../Assets/Ellipse 1.png"> 
+                        <img class="profile" id="image2" src="../Assets/Ellipse 1.png" required> 
                     </label>
                     <label>
                         <input type="radio" id="profile3" name="profile"
                                 value="../Assets/Ellipse -8.png" required>
-                        <img class="profile" id="image3" src="../Assets/Ellipse -8.png"> 
+                        <img class="profile" id="image3" src="../Assets/Ellipse -8.png" required> 
                     </label>
                     <label>
                         <input type="radio" id="profile4" name="profile"
                                 value="../Assets/Ellipse -7.png" required>
-                        <img class="profile" id="image4" src="../Assets/Ellipse -7.png"> 
+                        <img class="profile" id="image4" src="../Assets/Ellipse -7.png" required> 
                     </label>
                 </div>
             </div>
@@ -157,5 +158,6 @@
         </form>
     </div>
     <script type="text/javascript" src="../Java-Script/Employee_Payroll.js"></script>
+    <script type="text/javascript" src="../Java-Script/Employee_PayrollData.js"></script>
 </body>
 </html>
