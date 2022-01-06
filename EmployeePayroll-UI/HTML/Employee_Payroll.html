@@ -86,6 +86,7 @@
             </div>
             <div class="row-content">
                 <label class="tabel text" for="startDate">Start Date</label>
+                <error-output class="date-error" for="text"></error-output>
                 <div>
                     <select name="Day" id="day">
                         <option value="1">1</option>
@@ -135,6 +136,8 @@
                         <option value="Dec">December</option>
                     </select>
                     <select name="Year" id="year">
+                        <option value="2020">2022</option>
+                        <option value="2019">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -149,7 +152,7 @@
                 <textarea name="Notes" id="notes" class="input" placeholder="" style="height: 100px;"></textarea>
             </div>
             <div class="buttonParent">
-                <a href="./home.html" class="button cancelButton">Cancel</a>
+                <button type="cancel" class="button cancelButton">Cancel</button>
                 <div class="submit-reset">
                     <button type="submit" class="button submitButton" id="submitButton">Submit</button>
                     <button type="reset" class="resetButton button">Reset</button>
