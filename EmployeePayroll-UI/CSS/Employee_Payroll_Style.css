@@ -226,3 +226,9 @@ select {
         align-items: flex-start;
     }
 }
+
+error-output {
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}

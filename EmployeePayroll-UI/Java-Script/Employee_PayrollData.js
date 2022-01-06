@@ -3,7 +3,10 @@ class Employee_PayrollData{
         return this.name
     }
     set name(name){
-        this.name = name;
+        let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+        if (nameRegex.test(name))
+            this._name = name;
+        else throw "Name is incorrect";
     }
 
     get profilePic(){
