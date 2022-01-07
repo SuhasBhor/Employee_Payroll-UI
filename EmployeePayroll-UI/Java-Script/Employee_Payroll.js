@@ -1,39 +1,64 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-    //Name Validation
-    const text = document.querySelector('#name');
+    const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
-    text.addEventListener('input', function () {
-        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$')
-        if (nameRegex.test(text.value)) {
+    name.addEventListener('input', function() {
+        if (name.value.length == 0) {
             textError.textContent = " ";
-        } else {
-            textError.textContent = "Name Is Invalid";
+            return;
         }
-    });
-
-    //Changing values Of Salary Acccording To Slider
-    const salary = document.querySelector('#salary');
-    const salaryOutput = document.querySelector('.salary-output');
-    salaryOutput.textContent = salary.value;
-    salary.addEventListener('input', function () {
-        salaryOutput.textContent = salary.value;
-    });
-
-    //Start Date Validation
-    const date = document.querySelector("#startDate");
-    date.addEventListener('input', function () {
-        const startDate = new Date(Date.parse(getInputValueById("#day") + " " +
-            getInputValueById("#month") + " " +
-            getInputValueById("#year")));
         try {
-            (new Employee_PayrollData()).startDate = startDate;
-            setTextValue('.date-error', "");
-        } catch (e) {
-            throw "Date Is Invalid";
-            setTextValue('.date-error', e);
+            (new Employee_PayrollData()).name = name.value;
+            textError.textContent = " ";
+        } catch (invalidName) {
+            textError.textContent = invalidName;
         }
+    });
+
+    const salary = document.querySelector("#salary");
+    const output = document.querySelector('.salary-output');
+    output.textContent = salary.value;
+    salary.addEventListener('input', function() {
+        output.textContent = salary.value;
     });
 });
 
+function saveForm(){
+    let employeePayrollData = new Employee_PayrollData;
 
+    let profile = document.querySelector('input[name="profile"]:checked');
+    if(profile != null){
+        employeePayrollData.profilePic = profile.value;
+    }
+        
+    let gender = document.querySelector('input[name="gender"]:checked');
+    if(gender != null){
+        employeePayrollData.gender = gender.value;
+    }
 
+    employeePayrollData.salary = document.querySelector('#salary').value;
+    employeePayrollData.note = document.querySelector('#notes').value;
+
+    let day = document.querySelector('select[name=day]').value;
+    let month = document.querySelector('select[name=month]').value;
+    let year = document.querySelector('select[name=year]').value;
+    let errorDate = document.querySelector("#error-date");
+    try{
+        employeePayrollData.startDate = day + "/" + month + "/" + year;
+        errorDate.textContent = " ";
+    }
+    catch(incorrectDate){
+        errorDate.textContent = incorrectDate;
+    }
+
+    let department = new Array;
+    document.getElementsByName('department').forEach( (elemnt) => {
+        if(elemnt.checked == true){
+            department.push(elemnt.value);
+        }
+    });
+    employeePayrollData.department = department;
+};
+
+function submitEmployeeForm(){
+    window.location = "home.html";
+}

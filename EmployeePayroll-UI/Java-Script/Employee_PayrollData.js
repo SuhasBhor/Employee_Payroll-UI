@@ -1,66 +1,78 @@
-class Employee_PayrollData{
-    get name(){
-        return this.name
+class Employee_PayrollData {
+    //getter and setter method
+    get id() {
+        return this._id;
     }
-    set name(name){
-        this.name = name;
-    }
-
-    get profilePic(){
-        return this.profilePic;
-    }
-    set profilePic(profilePic){
-        this.profilePic = profilePic;
+    set id(id) {
+        this._id = id;
     }
 
-    get gender(){
-        return this.gender;
+    get name() {
+        return this._name;
     }
-    set gender(gender){
-        this.gender = gender;
-    }
-
-    get department(){
-        return this.department;
-    }
-    set department(department){
-        this.department = department;
-    }
-
-    get salary(){
-        return this.salary;
-    }
-    set salary(salary){
-        this.salary = salary;
-    }
-
-    get startDate(){
-        return this.startDate;
-    }
-    set startDate(startDate){
-        let now = new Date();
-        if (startDate > now){
-            throw "Start Date Is A Future Date";
-        } 
-        var diff = Math.abs(now.getTime() - startDate.getTime());
-        if(diff / (1000 * 60 * 60 * 24) > 30){
-            throw "Start Date Is Beyond 30 Days";
-        }else{
-            this.startDate = startDate;
+    set name(name) {
+        let nameRegex = /^[A-Z][A-Z a-z]{3,}$/;
+        if (nameRegex.test(name)){
+            this._name = name;
+        }
+        else{ 
+            throw "Name is incorrect!";
         }
     }
 
-    get notes(){
-        return this.notes;
+    get profilePic() {
+        return this._profilePic;
     }
-    set notes(notes){
-        this.notes = notes;
+    set profilePic(profilePic) {
+        this._profilePic = profilePic;
     }
 
-    toString() {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const empDate = !this.start_date ? "undefined" : this.start_date.toLocaleDateString("en-US", options);
-        return 'Name = ' + this.name + ", Gender = " + this.gender + ", ProfilePic = " + this.profilePic +
-            ", Department = " + this.department + ", Salary = " + this.salary + ", StartDate = " + empDate + ", Note = " + this.notes;
+    get gender() {
+        return this._gender;
+    }
+    set gender(gender) {
+        this._gender = gender;
+    }
+
+    get department() {
+        return this._department;
+    }
+    set department(department) {
+        this._department = department;
+    }
+    
+    get salary() {
+        return this._salary;
+    }
+    set salary(salary) {
+        this._salary = salary;
+    }
+
+    get note() {
+        return this._note;
+    }
+    set note(note) {
+        this._note = note;
+    }
+    
+    get startDate() {
+        return this.startDateValue;
+    }
+
+    set startDate(startDate) {
+        let date = startDate.split("/");
+        let todayDate = new Date();
+        let employeeDate = new Date(date[2], date[1]-1 , date[0]);
+        
+        var diff = (todayDate.getTime() - employeeDate.getTime() );
+        if(employeeDate > todayDate){
+            throw "start date cannot be future date."
+        }
+        if( diff < (30 * 24 * 60 * 60 * 1000) && diff > 0 ) {
+            this.startDateValue = startDate;
+        }
+        else {
+            throw "Start date cannot be less than 30 days.";
+        }
     }
 }
