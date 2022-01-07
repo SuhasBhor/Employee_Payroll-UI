@@ -16,7 +16,7 @@ class Employee_PayrollData {
             this._name = name;
         }
         else{ 
-            throw "Name is incorrect!";
+            throw "Name is Invalid!";
         }
     }
 
@@ -54,7 +54,7 @@ class Employee_PayrollData {
     set note(note) {
         this._note = note;
     }
-    
+
     get startDate() {
         return this._startDate;
     }
@@ -66,10 +66,22 @@ class Employee_PayrollData {
         if (diff / (1000 * 60 * 60 * 24) > 30) throw "Start date is beyond 30 days";
         this._startDate = startDate;
     }
+
+    //method
     toString() {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const empDate = !this.start_date ? "undefined" : this.start_date.toLocaleDateString("en-US", options);
-        return 'Name = ' + this.name + ", Gender = " + this.gender + ", ProfilePic = " + this.profilePic +
-            ", Department = " + this.department + ", Salary = " + this.salary + ", StartDate = " + empDate + ", Note = " + this.notes;
+        const option = { day: "numeric", month: "short", year: "numeric" };
+        const empDate = !this.startDate ?
+            "undefined" :
+            this.startDate.toLocaleDateString("en-GB", option);
+        return (
+            "id=" + this.id +
+            ",name= '" + this.name +
+            ",gender= '" + this.gender +
+            ",profilePic= '" + this.profilePic +
+            ",department=" + this.department +
+            ",salary=" + this.salary +
+            ",startDate=" + empDate +
+            ",note=" + this.note
+        );
     }
 }
