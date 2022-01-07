@@ -140,12 +140,12 @@ button {
     width: 140px;
     opacity: 1;
     background-color: #e2e2e2;
-    border: 1px solid #707070;
+    border: 2px solid #707070;
     letter-spacing: 0px;
     cursor: pointer;
 } 
 .submitButton {
-    border: 1px solid #4caf50;
+    border: 2px solid #4caf50;
     margin-right: 30px;
     border-radius: 15px;
     font-size: medium;
@@ -155,9 +155,9 @@ button {
     color: white;
 }
 .cancelButton {
-    border: 1px solid #f44336;
+    border: 2px solid #f44336;
     text-align: center;
-    color: black;
+    color: #f44336;
     font-size: medium;
 }
 .cancelButton:hover{
@@ -165,7 +165,7 @@ button {
     color: white;
 }
 .resetButton{
-    border: 1px solid #008CBA;
+    border: 2px solid #008CBA;
     font-size: medium;
     border-radius: 15px;
 }
@@ -181,6 +181,8 @@ button {
     }
 }
 error-output {
+    margin-left: 10px;
+    font-size: 12px;
     font-size: 12px;
     font-style: italic;
 } 
